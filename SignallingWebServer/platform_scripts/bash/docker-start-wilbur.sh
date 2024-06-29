@@ -15,7 +15,7 @@ setup_turn_stun
 
 # Start docker container by name using host networking
 if [[ ! -z "${TURN_SERVER}" ]]; then
-	PEER_OPTIONS="{\""iceServers\"":[{\""urls\"":[\""stun:"${STUN_SERVER}"\"",\""turn":"${TURN_SERVER}\""],\""username\"":\""${TURN_USER}\"",\""credential\"":\""${TURN_PASS}\""}]}" 
+	PEER_OPTIONS="{\""iceServers\"":[{\""urls\"":[\""stun:stun4.1.google.com:19302\"",\""turn":"${TURN_SERVER}\""],\""username\"":\""${TURN_USER}\"",\""credential\"":\""${TURN_PASS}\""}]}" 
 else
 	PEER_OPTIONS="{\""iceServers\"":[{\""urls\"":[\""stun:"${STUN_SERVER}"\""]}]}"
 fi
