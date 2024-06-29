@@ -1,15 +1,16 @@
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
-import { SignallingServer, IServerConfig, WebServer, InitLogging, Logger, IWebServerConfig } from '@epicgames-ps/lib-pixelstreamingsignalling-ue5.5';
+import { SignallingServer,
+         IServerConfig,
+         WebServer,
+         InitLogging,
+         Logger,
+         IWebServerConfig } from '@epicgames-ps/lib-pixelstreamingsignalling-ue5.5';
 import { stringify, beautify, IProgramOptions } from './Utils';
 import { initInputHandler } from './InputHandler';
 import { Command, Option } from 'commander';
 import { initialize } from 'express-openapi';
-
-// Load environment variables from .env file if present
-import dotenv from 'dotenv';
-dotenv.config();
 
 // eslint-disable-next-line  @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
 const pjson = require('../package.json');
@@ -40,7 +41,7 @@ program
         .choices(["basic","verbose","formatted"])
         .preset("basic"))
     .option('--streamer_port <port>', 'Sets the listening port for streamer connections.', '8888')
-    .option('--player_port <port>', 'Sets the listening port for player connections.', process.env.PORT || '80')
+    .option('--player_port <port>', 'Sets the listening port for player connections.', '80')
     .option('--sfu_port <port>', 'Sets the listening port for SFU connections.', '8889')
     .option('--serve', 'Enables the webserver on player_port.', false)
     .option('--http_root <path>', 'Sets the path for the webserver root.', 'www')
@@ -177,4 +178,3 @@ if (options.rest_api) {
         }
     });
 }
-
